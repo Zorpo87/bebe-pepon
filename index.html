@@ -520,6 +520,45 @@
     </div>
   </aside>
 
+  <!-- FICHA DE PRODUCTO -->
+  <div class="product-modal-overlay" id="productModalOverlay" aria-hidden="true"></div>
+  <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle" aria-hidden="true">
+    <button class="product-modal__close" id="productModalClose" type="button" aria-label="Cerrar ficha">✕</button>
+    <div class="product-modal__main">
+      <div class="product-modal__gallery">
+        <img id="productModalImage" src="" alt="" width="640" height="640" decoding="async">
+      </div>
+      <div class="product-modal__info">
+        <div class="product-modal__badges" id="productModalBadges"></div>
+        <h2 class="product-modal__title" id="productModalTitle"></h2>
+        <p class="product-modal__meta" id="productModalMeta"></p>
+        <p class="product-modal__price" id="productModalPrice"></p>
+        <div class="product-modal__field">
+          <label class="product-modal__label" for="productModalSize">Talla</label>
+          <select class="product-modal__select" id="productModalSize"></select>
+        </div>
+        <div class="product-modal__field">
+          <span class="product-modal__label">Cantidad</span>
+          <div class="qty-selector" id="productQtySelector">
+            <button type="button" class="qty-selector__btn" id="productQtyMinus" aria-label="Reducir cantidad">−</button>
+            <input type="number" class="qty-selector__input" id="productQty" value="1" min="1" max="10" aria-label="Cantidad">
+            <button type="button" class="qty-selector__btn" id="productQtyPlus" aria-label="Aumentar cantidad">+</button>
+          </div>
+        </div>
+        <p class="product-modal__desc" id="productModalDesc"></p>
+        <div class="product-modal__cta">
+          <button type="button" class="btn btn--primary btn--full" id="productAddToCart">Añadir al carrito</button>
+          <a class="btn btn--outline btn--full" id="productContactBtn" href="#" target="_blank" rel="noopener">Consultar por Instagram</a>
+        </div>
+        <p class="product-modal__note">Envíos a toda España · Confección propia</p>
+      </div>
+    </div>
+    <div class="product-modal__related">
+      <h3 class="product-modal__related-title">También te puede gustar</h3>
+      <div class="product-modal__related-grid" id="productRelatedGrid"></div>
+    </div>
+  </div>
+
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu__header">

@@ -13,11 +13,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const cartCount = document.getElementById('cartCount');
   const cartSubtotal = document.getElementById('cartSubtotal');
 
+  const productModalOverlay = document.getElementById('productModalOverlay');
+  const productModal = document.getElementById('productModal');
+  const productModalClose = document.getElementById('productModalClose');
+  const productModalImage = document.getElementById('productModalImage');
+  const productModalBadges = document.getElementById('productModalBadges');
+  const productModalTitle = document.getElementById('productModalTitle');
+  const productModalMeta = document.getElementById('productModalMeta');
+  const productModalPrice = document.getElementById('productModalPrice');
+  const productModalSize = document.getElementById('productModalSize');
+  const productModalDesc = document.getElementById('productModalDesc');
+  const productQty = document.getElementById('productQty');
+  const productQtyMinus = document.getElementById('productQtyMinus');
+  const productQtyPlus = document.getElementById('productQtyPlus');
+  const productAddToCart = document.getElementById('productAddToCart');
+  const productContactBtn = document.getElementById('productContactBtn');
+  const productRelatedGrid = document.getElementById('productRelatedGrid');
+
   const THUMB = 'assets/images/products/thumbs/';
   let cart = [
-    { name: 'Pelele con Lazo', price: 15, img: THUMB + '01-pelele-lazo.jpg', size: '12 meses' },
-    { name: 'Jesusito 3 piezas · Niños', price: 24.90, img: THUMB + '05-jesusito-ninos.jpg', size: '4 años' }
+    { id: 1, name: 'Pelele con Lazo', price: 15, img: THUMB + '01-pelele-lazo.jpg', size: '12 meses', qty: 1 },
+    { id: 5, name: 'Jesusito 3 piezas · Niños', price: 24.90, img: THUMB + '05-jesusito-ninos.jpg', size: '4 años', qty: 1 }
   ];
+
+  let activeProduct = null;
+  let toastTimer = null;
 
   const CATEGORY_HASHES = Object.keys(CATEGORIES);
   let activeCategory = null;
@@ -27,9 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
     return `${price.toFixed(2).replace('.', ',')} €`;
   }
 
-  function getContactUrl() {
+  function getCartCount() {
+    return cart.reduce((sum, item) => sum + item.qty, 0);
+  }
+
+  function getContactUrl(message) {
     if (BRAND.whatsapp) {
-      const text = encodeURIComponent(BRAND.whatsappMessage);
+      const text = encodeURIComponent(message || BRAND.whatsappMessage);
       return `https://wa.me/${BRAND.whatsapp}?text=${text}`;
     }
     return BRAND.instagramDm;
@@ -64,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="product-card__img">
           <img src="${product.image}" alt="${product.name}" width="400" height="400" decoding="async" ${loading}>
           <button class="product-card__quick-add"
+            data-id="${product.id}"
             data-name="${product.name}"
             data-price="${product.price}"
             data-img="${product.image}">+ Añadir</button>
@@ -85,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!grid || grid.dataset.mounted === 'true') return;
     grid.innerHTML = items.map((p, i) => renderProductCard(p, type, i > 1)).join('');
     grid.dataset.mounted = 'true';
-    bindQuickAdd(grid);
+    bindProductInteractions(grid);
   }
 
   function lazyMountSection(sectionId, gridId, items, type = 'default') {
@@ -140,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    bindQuickAdd(grid);
+    bindProductInteractions(grid);
   }
 
   function ensureCategoryShop(category = 'peleles') {
@@ -210,7 +235,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeCart() {
     cartSidebar.classList.remove('cart-sidebar--active');
     cartOverlay.classList.remove('cart-overlay--active');
-    document.body.style.overflow = '';
+    if (!productModal.classList.contains('product-modal--active') && !mobileMenu.classList.contains('mobile-menu--active')) {
+      document.body.style.overflow = '';
+    }
   }
 
   cartBtn.addEventListener('click', openCart);
@@ -225,7 +252,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeMobileMenu() {
     mobileMenu.classList.remove('mobile-menu--active');
-    document.body.style.overflow = '';
+    if (!productModal.classList.contains('product-modal--active') && !cartSidebar.classList.contains('cart-sidebar--active')) {
+      document.body.style.overflow = '';
+    }
   }
 
   mobileMenuClose.addEventListener('click', closeMobileMenu);
@@ -250,57 +279,234 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="${item.img}" alt="${item.name}" width="72" height="72" loading="lazy" decoding="async">
         <div class="cart-item__info">
           <h4>${item.name}</h4>
-          <p>Talla ${item.size}</p>
-          <span class="cart-item__price">${formatPrice(item.price)}</span>
+          <p>Talla ${item.size} · Cant. ${item.qty}</p>
+          <span class="cart-item__price">${formatPrice(item.price * item.qty)}</span>
         </div>
         <button class="cart-item__remove" data-index="${i}" aria-label="Eliminar">✕</button>
       </div>
     `).join('');
 
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    cartBadge.textContent = cart.length;
-    cartCount.textContent = `(${cart.length})`;
+    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    const count = getCartCount();
+    cartBadge.textContent = count;
+    cartCount.textContent = `(${count})`;
     cartSubtotal.textContent = formatPrice(total);
 
     cartItems.querySelectorAll('.cart-item__remove').forEach(btn => {
       btn.addEventListener('click', () => {
         cart.splice(parseInt(btn.dataset.index, 10), 1);
         renderCart();
-        showToast('Producto eliminado del carrito');
+        showToast('Producto eliminado del carrito', { type: 'error', icon: '✕' });
       });
     });
   }
 
-  function bindQuickAdd(root = document) {
+  function addToCart({ id, name, price, img, size, qty = 1 }) {
+    const existing = cart.find(item => item.id === id && item.size === size);
+    if (existing) {
+      existing.qty += qty;
+    } else {
+      cart.push({ id, name, price, img, size, qty });
+    }
+    renderCart();
+    pulseCartBadge();
+  }
+
+  function pulseCartBadge() {
+    cartBadge.style.transform = 'scale(1.3)';
+    setTimeout(() => { cartBadge.style.transform = ''; }, 300);
+  }
+
+  function bindProductInteractions(root = document) {
     root.querySelectorAll('.product-card__quick-add').forEach(btn => {
       if (btn.dataset.bound) return;
       btn.dataset.bound = 'true';
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
-        const { name, price, img } = btn.dataset;
-        cart.push({ name, price: parseFloat(price), img, size: 'Por confirmar' });
-        renderCart();
-        showToast(`✓ ${name} añadido al carrito`);
-        cartBadge.style.transform = 'scale(1.3)';
-        setTimeout(() => { cartBadge.style.transform = ''; }, 300);
+        const product = getProductById(btn.dataset.id);
+        const defaultSize = product ? getProductSizes(product)[0] : 'Por confirmar';
+        addToCart({
+          id: Number(btn.dataset.id),
+          name: btn.dataset.name,
+          price: parseFloat(btn.dataset.price),
+          img: btn.dataset.img,
+          size: defaultSize,
+          qty: 1
+        });
+        showToast(`${btn.dataset.name} añadido al carrito`, {
+          type: 'success',
+          icon: '✓',
+          actionLabel: 'Ver carrito',
+          onAction: openCart
+        });
+      });
+    });
+
+    root.querySelectorAll('.product-card').forEach(card => {
+      if (card.dataset.boundCard) return;
+      card.dataset.boundCard = 'true';
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.product-card__quick-add')) return;
+        openProductModal(parseInt(card.dataset.id, 10));
       });
     });
   }
 
-  function showToast(message) {
+  function renderRelatedProducts(product) {
+    const related = getRelatedProducts(product);
+    if (!related.length) {
+      productRelatedGrid.innerHTML = '<p class="shop-empty">Explora más modelos en el catálogo.</p>';
+      return;
+    }
+
+    productRelatedGrid.innerHTML = related.map(item => `
+      <button type="button" class="related-card" data-id="${item.id}">
+        <img src="${item.image}" alt="${item.name}" width="160" height="160" loading="lazy" decoding="async">
+        <span class="related-card__name">${item.name}</span>
+        <span class="related-card__price">${formatPrice(item.price)}</span>
+      </button>
+    `).join('');
+
+    productRelatedGrid.querySelectorAll('.related-card').forEach(btn => {
+      btn.addEventListener('click', () => {
+        openProductModal(parseInt(btn.dataset.id, 10));
+      });
+    });
+  }
+
+  function openProductModal(productId) {
+    const product = getProductById(productId);
+    if (!product) return;
+
+    activeProduct = product;
+    const sizes = getProductSizes(product);
+    const primaryCategory = product.categories?.find(c => c !== 'novedades') || product.categories?.[0];
+    const categoryLabel = primaryCategory ? CATEGORIES[primaryCategory]?.label : '';
+
+    productModalImage.src = getFullImage(product);
+    productModalImage.alt = product.name;
+    productModalTitle.textContent = product.name;
+    productModalMeta.textContent = [categoryLabel, product.tag, product.sold].filter(Boolean).join(' · ');
+    productModalPrice.textContent = formatPrice(product.price);
+    productModalDesc.textContent = product.sizes;
+
+    productModalBadges.innerHTML = [
+      product.badge ? `<span class="product-modal__badge${product.badge.includes('Top') ? ' product-modal__badge--hot' : ''}">${product.badge}</span>` : '',
+      product.instagram ? '<span class="product-modal__badge">Foto real de Instagram</span>' : ''
+    ].filter(Boolean).join('');
+
+    productModalSize.innerHTML = sizes.map(size => `<option value="${size}">${size}</option>`).join('');
+    productQty.value = '1';
+
+    const contactMessage = `¡Hola! Me interesa el modelo "${product.name}" (${formatPrice(product.price)}). ¿Podéis ayudarme con talla y disponibilidad?`;
+    productContactBtn.href = getContactUrl(contactMessage);
+
+    renderRelatedProducts(product);
+
+    productModalOverlay.classList.add('product-modal-overlay--active');
+    productModal.classList.add('product-modal--active');
+    productModalOverlay.setAttribute('aria-hidden', 'false');
+    productModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    productModalClose.focus();
+  }
+
+  function closeProductModal() {
+    productModalOverlay.classList.remove('product-modal-overlay--active');
+    productModal.classList.remove('product-modal--active');
+    productModalOverlay.setAttribute('aria-hidden', 'true');
+    productModal.setAttribute('aria-hidden', 'true');
+    activeProduct = null;
+    if (!cartSidebar.classList.contains('cart-sidebar--active') && !mobileMenu.classList.contains('mobile-menu--active')) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  function clampQty(value) {
+    const qty = Math.max(1, Math.min(10, Number(value) || 1));
+    productQty.value = String(qty);
+    return qty;
+  }
+
+  productModalClose.addEventListener('click', closeProductModal);
+  productModalOverlay.addEventListener('click', closeProductModal);
+  productQtyMinus.addEventListener('click', () => clampQty(Number(productQty.value) - 1));
+  productQtyPlus.addEventListener('click', () => clampQty(Number(productQty.value) + 1));
+  productQty.addEventListener('change', () => clampQty(productQty.value));
+
+  productAddToCart.addEventListener('click', () => {
+    if (!activeProduct) return;
+
+    const size = productModalSize.value;
+    const qty = clampQty(productQty.value);
+
+    addToCart({
+      id: activeProduct.id,
+      name: activeProduct.name,
+      price: activeProduct.price,
+      img: activeProduct.image,
+      size,
+      qty
+    });
+
+    const label = qty > 1
+      ? `${qty} × ${activeProduct.name} añadidos al carrito`
+      : `${activeProduct.name} añadido al carrito`;
+
+    showToast(label, {
+      type: 'success',
+      icon: '✓',
+      actionLabel: 'Ver carrito',
+      onAction: openCart
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && productModal.classList.contains('product-modal--active')) {
+      closeProductModal();
+    }
+  });
+
+  function showToast(message, options = {}) {
+    const { type = 'success', icon = '✓', actionLabel, onAction } = options;
     let toast = document.querySelector('.toast');
+
     if (!toast) {
       toast = document.createElement('div');
       toast.className = 'toast';
+      toast.innerHTML = `
+        <span class="toast__icon"></span>
+        <span class="toast__text"></span>
+      `;
       document.body.appendChild(toast);
     }
-    toast.textContent = message;
+
+    toast.className = `toast toast--${type}`;
+    toast.querySelector('.toast__icon').textContent = icon;
+    toast.querySelector('.toast__text').textContent = message;
+
+    const oldAction = toast.querySelector('.toast__action');
+    if (oldAction) oldAction.remove();
+
+    if (actionLabel && onAction) {
+      const actionBtn = document.createElement('button');
+      actionBtn.type = 'button';
+      actionBtn.className = 'toast__action';
+      actionBtn.textContent = actionLabel;
+      actionBtn.addEventListener('click', () => {
+        onAction();
+        toast.classList.remove('toast--show');
+      });
+      toast.appendChild(actionBtn);
+    }
+
+    if (toastTimer) clearTimeout(toastTimer);
     toast.classList.add('toast--show');
-    setTimeout(() => toast.classList.remove('toast--show'), 2500);
+    toastTimer = setTimeout(() => toast.classList.remove('toast--show'), 3200);
   }
 
   document.getElementById('searchBtn').addEventListener('click', () => {
-    showToast('🔍 Búsqueda disponible en la versión final');
+    showToast('Búsqueda disponible en la versión final', { type: 'success', icon: 'i' });
   });
 
   setupContactLinks();

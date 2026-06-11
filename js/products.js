@@ -400,3 +400,77 @@ function getProductsByCategory(category) {
 }
 
 
+
+function getProductById(id) {
+
+  return getAllProducts().find(p => p.id === Number(id));
+
+}
+
+
+
+function getFullImage(product) {
+
+  return product.image.replace('/thumbs/', '/');
+
+}
+
+
+
+function getProductSizes(product) {
+
+  const text = product.sizes;
+
+  const listMatch = text.match(/Tallas?\s+([\d,\s]+)\s*(meses|años)/i);
+
+  if (listMatch) {
+
+    const unit = listMatch[2];
+
+    return listMatch[1].split(',').map(s => s.trim()).filter(Boolean).map(n => `${n} ${unit}`);
+
+  }
+
+
+
+  const rangeMatch = text.match(/Tallas?\s+(\d+)[–-](\d+)\s*(meses|años)/i);
+
+  if (rangeMatch) {
+
+    const start = Number(rangeMatch[1]);
+
+    const end = Number(rangeMatch[2]);
+
+    const unit = rangeMatch[3];
+
+    const monthSizes = [6, 9, 12, 18, 24, 36, 48];
+
+    const yearSizes = [2, 3, 4, 5, 6, 8];
+
+    const pool = unit === 'meses' ? monthSizes : yearSizes;
+
+    return pool.filter(n => n >= start && n <= end).map(n => `${n} ${unit}`);
+
+  }
+
+
+
+  return ['Consultar talla'];
+
+}
+
+
+
+function getRelatedProducts(product, limit = 4) {
+
+  const cats = (product.categories || []).filter(c => c !== 'novedades');
+
+  return getAllProducts()
+
+    .filter(p => p.id !== product.id && p.categories?.some(c => cats.includes(c)))
+
+    .slice(0, limit);
+
+}
+
+
