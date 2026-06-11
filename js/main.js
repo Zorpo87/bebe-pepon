@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function getProductWhatsAppMessage(productName) {
-    return `Hola, quiero información sobre el producto ${productName}.`;
+    return `Hola, quería más información sobre ${productName}.`;
   }
 
   function getWhatsAppUrl(message) {
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (whatsappBtn) whatsappBtn.href = welcomeUrl;
     if (footerContact) footerContact.href = welcomeUrl;
-    if (tooltip) tooltip.textContent = BRAND.whatsappMessage;
+    if (tooltip) tooltip.textContent = BRAND.whatsappWelcome;
   }
 
   function renderProductCard(product, type = 'default', lazy = true) {

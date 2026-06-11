@@ -12,9 +12,13 @@ const BRAND = {
 
   whatsapp: '34658067722',
 
-  whatsappMessage:
+  whatsappWelcome:
 
     '¡Bienvenida/o a bebé pepón! Estamos aquí para lo que necesites.',
+
+  whatsappMessage:
+
+    'Hola, quería más información sobre bebé pepón.',
 
   hours: 'Lun – Sáb: 10:00 – 19:00',
 
