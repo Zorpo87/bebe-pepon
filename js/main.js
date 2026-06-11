@@ -51,23 +51,24 @@ document.addEventListener('DOMContentLoaded', () => {
     return cart.reduce((sum, item) => sum + item.qty, 0);
   }
 
-  function getContactUrl(message) {
-    if (BRAND.whatsapp) {
-      const text = encodeURIComponent(message || BRAND.whatsappMessage);
-      return `https://wa.me/${BRAND.whatsapp}?text=${text}`;
-    }
-    return BRAND.instagramDm;
+  function getProductWhatsAppMessage(productName) {
+    return `Hola, quiero información sobre el producto ${productName}.`;
+  }
+
+  function getWhatsAppUrl(message) {
+    const text = encodeURIComponent(message || BRAND.whatsappMessage);
+    return `https://wa.me/${BRAND.whatsapp}?text=${text}`;
   }
 
   function setupContactLinks() {
-    const contactUrl = getContactUrl();
+    const welcomeUrl = getWhatsAppUrl();
     const whatsappBtn = document.getElementById('whatsappBtn');
     const footerContact = document.getElementById('footerContactBtn');
-    if (whatsappBtn) {
-      whatsappBtn.href = contactUrl;
-      whatsappBtn.setAttribute('aria-label', BRAND.whatsapp ? 'Contactar por WhatsApp' : 'Contactar por Instagram');
-    }
-    if (footerContact) footerContact.href = contactUrl;
+    const tooltip = document.querySelector('.whatsapp-btn__tooltip');
+
+    if (whatsappBtn) whatsappBtn.href = welcomeUrl;
+    if (footerContact) footerContact.href = welcomeUrl;
+    if (tooltip) tooltip.textContent = BRAND.whatsappMessage;
   }
 
   function renderProductCard(product, type = 'default', lazy = true) {
@@ -80,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ? `<span class="product-card__tag">${product.tag}</span>`
         : `<span class="product-card__tag">${BRAND.instagramUser}</span>`;
     const loading = lazy ? 'loading="lazy"' : 'loading="eager" fetchpriority="high"';
+    const waUrl = getWhatsAppUrl(getProductWhatsAppMessage(product.name));
 
     return `
       <article class="${cardClass}" data-id="${product.id}">
@@ -98,7 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <p class="product-card__sizes">${product.sizes}</p>
           <div class="product-card__footer">
             <span class="product-card__price">${formatPrice(product.price)}</span>
-            ${footerExtra}
+            <div class="product-card__actions">
+              <a href="${waUrl}" class="product-card__wa" target="_blank" rel="noopener" aria-label="Consultar ${product.name} por WhatsApp">WhatsApp</a>
+              ${footerExtra}
+            </div>
           </div>
         </div>
       </article>
@@ -342,11 +347,17 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    root.querySelectorAll('.product-card__wa').forEach(link => {
+      if (link.dataset.boundWa) return;
+      link.dataset.boundWa = 'true';
+      link.addEventListener('click', (e) => e.stopPropagation());
+    });
+
     root.querySelectorAll('.product-card').forEach(card => {
       if (card.dataset.boundCard) return;
       card.dataset.boundCard = 'true';
       card.addEventListener('click', (e) => {
-        if (e.target.closest('.product-card__quick-add')) return;
+        if (e.target.closest('.product-card__quick-add, .product-card__wa')) return;
         openProductModal(parseInt(card.dataset.id, 10));
       });
     });
@@ -398,8 +409,8 @@ document.addEventListener('DOMContentLoaded', () => {
     productModalSize.innerHTML = sizes.map(size => `<option value="${size}">${size}</option>`).join('');
     productQty.value = '1';
 
-    const contactMessage = `¡Hola! Me interesa el modelo "${product.name}" (${formatPrice(product.price)}). ¿Podéis ayudarme con talla y disponibilidad?`;
-    productContactBtn.href = getContactUrl(contactMessage);
+    productContactBtn.href = getWhatsAppUrl(getProductWhatsAppMessage(product.name));
+    productContactBtn.setAttribute('aria-label', `Consultar ${product.name} por WhatsApp`);
 
     renderRelatedProducts(product);
 

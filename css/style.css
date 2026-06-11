@@ -812,6 +812,33 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
+}
+
+.product-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.product-card__wa {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 50px;
+  background: rgba(212, 165, 165, 0.22);
+  color: var(--warm-brown);
+  border: 1px solid rgba(212, 165, 165, 0.4);
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.product-card__wa:hover {
+  background: var(--dusty-pink);
+  color: var(--white);
+  border-color: var(--dusty-pink);
 }
 
 .product-card__price {

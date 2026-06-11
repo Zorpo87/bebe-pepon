@@ -10,11 +10,11 @@ const BRAND = {
 
   instagramDm: 'https://ig.me/m/bebe.pepon',
 
-  whatsapp: null,
+  whatsapp: '34658067722',
 
   whatsappMessage:
 
-    '¡Hola bebé pepón! 👋 Me gustaría saber en qué podéis ayudarme. Estoy interesada/o en vuestra ropa infantil.',
+    '¡Bienvenida/o a bebé pepón! Estamos aquí para lo que necesites.',
 
   hours: 'Lun – Sáb: 10:00 – 19:00',
 
