@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bebé pepón · Moda infantil con confección propia</title>
+  <meta name="description" content="Ropa de bebé y niño con estilo clásico. Peleles, ranitas, jesusitos y saquitos. Confección propia. Envíos a toda España.">
+  <meta property="og:title" content="bebé pepón · Moda infantil con confección propia">
+  <meta property="og:description" content="Peleles, ranitas y jesusitos con volantes y tejidos suaves. Envíos a toda España.">
+  <meta property="og:image" content="assets/images/products/04-jesusito-bebe.jpg">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="assets/images/products/04-jesusito-bebe.jpg" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&family=Great+Vibes&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&family=Great+Vibes&display=swap"></noscript>
+  <link rel="icon" href="assets/images/products/logo.jpg" type="image/jpeg">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="#" class="navbar__logo">
+        <img src="assets/images/products/logo.jpg" alt="bebé pepón logo" class="navbar__logo-img">
+        <span class="navbar__logo-text">bebé pepón</span>
+      </a>
+
+      <nav class="glass-menu" aria-label="Categorías">
+        <ul class="glass-menu__list">
+          <li><a href="#novedades" class="glass-menu__link"><span class="glass-menu__icon"><span class="menu-emoji__char">✨</span></span>Novedades</a></li>
+          <li><a href="#peleles" class="glass-menu__link"><span class="glass-menu__icon"><span class="menu-emoji__char">👶</span></span>Peleles</a></li>
+          <li><a href="#ranitas" class="glass-menu__link"><span class="glass-menu__icon"><span class="menu-emoji__char">🌸</span></span>Ranitas</a></li>
+          <li><a href="#jesusitos" class="glass-menu__link"><span class="glass-menu__icon"><span class="menu-emoji__char">🎀</span></span>Jesusitos</a></li>
+          <li><a href="#saquitos" class="glass-menu__link"><span class="glass-menu__icon"><span class="menu-emoji__char">🧸</span></span>Saquitos</a></li>
+          <li><a href="#volantes" class="glass-menu__link"><span class="glass-menu__icon"><span class="menu-emoji__char">💫</span></span>Volantes</a></li>
+          <li><a href="#bebe" class="glass-menu__link"><span class="glass-menu__icon"><span class="menu-emoji__char">🍼</span></span>Bebé</a></li>
+          <li><a href="#ninos" class="glass-menu__link"><span class="glass-menu__icon"><span class="menu-emoji__char">🌿</span></span>Niños</a></li>
+        </ul>
+      </nav>
+
+      <div class="navbar__actions">
+        <button class="navbar__icon-btn" id="searchBtn" aria-label="Buscar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="navbar__icon-btn cart-btn" id="cartBtn" aria-label="Carrito">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-btn__badge" id="cartBadge">2</span>
+        </button>
+        <button class="navbar__burger" id="burgerBtn" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero__bg">
+      <img
+        src="assets/images/products/04-jesusito-bebe.jpg"
+        alt="Niña con jesusito bebé pepón"
+        class="hero__img"
+        width="828"
+        height="828"
+        fetchpriority="high"
+        decoding="async">
+      <div class="hero__overlay" aria-hidden="true"></div>
+    </div>
+    <div class="hero__content">
+      <div class="hero__logo">
+        <img src="assets/images/products/logo.jpg" alt="bebé pepón logo" class="hero__logo-img">
+        <span class="hero__logo-text">bebé pepón</span>
+      </div>
+      <p class="hero__tag">Confección propia · Envíos a toda España</p>
+      <h1 class="hero__title">Viste a los más pequeños<br><em>con amor y estilo</em></h1>
+      <p class="hero__subtitle">Peleles, ranitas y jesusitos con volantes, cuadros vichy y tejidos suaves. Moda infantil clásica hecha con cariño.</p>
+      <div class="hero__cta">
+        <a href="#novedades" class="btn btn--primary">Ver novedades</a>
+        <a href="#destacada" class="btn btn--glass">Colección Jesusitos</a>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span>Descubre más</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- CATEGORÍAS GLASS -->
+  <section class="categories" id="categorias">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label">Explora</span>
+        <h2 class="section-header__title">Nuestras categorías</h2>
+      </div>
+      <div class="categories__grid">
+        <a href="#peleles" id="peleles" class="cat-card cat-card--glass">
+          <div class="cat-card__img-wrap">
+            <img src="assets/images/products/thumbs/01-pelele-lazo.jpg" alt="Peleles" loading="lazy">
+          </div>
+          <div class="cat-card__info">
+            <h3>Peleles</h3>
+            <span>Desde 15€</span>
+          </div>
+        </a>
+        <a href="#ranitas" id="ranitas" class="cat-card cat-card--glass">
+          <div class="cat-card__img-wrap">
+            <img src="assets/images/products/thumbs/02-ranita-volantes.jpg" alt="Ranitas" loading="lazy">
+          </div>
+          <div class="cat-card__info">
+            <h3>Ranitas</h3>
+            <span>Desde 12€</span>
+          </div>
+        </a>
+        <a href="#jesusitos" id="jesusitos" class="cat-card cat-card--glass">
+          <div class="cat-card__img-wrap">
+            <img src="assets/images/products/thumbs/05-jesusito-ninos.jpg" alt="Jesusitos" loading="lazy">
+          </div>
+          <div class="cat-card__info">
+            <h3>Jesusitos</h3>
+            <span>Desde 19,90€</span>
+          </div>
+        </a>
+        <a href="#saquitos" id="saquitos" class="cat-card cat-card--glass">
+          <div class="cat-card__img-wrap">
+            <img src="assets/images/products/thumbs/03-saquito-elasticos.jpg" alt="Saquitos" loading="lazy">
+          </div>
+          <div class="cat-card__info">
+            <h3>Saquitos</h3>
+            <span>Desde 13€</span>
+          </div>
+        </a>
+        <a href="#volantes" id="volantes" class="cat-card cat-card--glass">
+          <div class="cat-card__img-wrap">
+            <img src="assets/images/products/thumbs/07-blusa-volante-floral.jpg" alt="Volantes" loading="lazy">
+          </div>
+          <div class="cat-card__info">
+            <h3>Volantes</h3>
+            <span>Cuellos volantes</span>
+          </div>
+        </a>
+        <a href="#bebe" id="bebe" class="cat-card cat-card--glass">
+          <div class="cat-card__img-wrap">
+            <img src="assets/images/products/thumbs/06-jesusito-bebe-2.jpg" alt="Bebé" loading="lazy">
+          </div>
+          <div class="cat-card__info">
+            <h3>Bebé</h3>
+            <span>0–24 meses</span>
+          </div>
+        </a>
+        <a href="#ninos" id="ninos" class="cat-card cat-card--glass">
+          <div class="cat-card__img-wrap">
+            <img src="assets/images/products/thumbs/11-jesusito-ninos-2.jpg" alt="Niños" loading="lazy">
+          </div>
+          <div class="cat-card__info">
+            <h3>Niños</h3>
+            <span>2–8 años</span>
+          </div>
+        </a>
+        <a href="#novedades" class="cat-card cat-card--glass cat-card--accent">
+          <div class="cat-card__img-wrap">
+            <img src="assets/images/products/thumbs/13-jesusito-bebe-3.jpg" alt="Novedades" loading="lazy">
+          </div>
+          <div class="cat-card__info">
+            <h3>Novedades</h3>
+            <span>Nueva temporada</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOVEDADES -->
+  <section class="products" id="novedades">
+    <div class="container">
+      <div class="section-header section-header--row">
+        <div>
+          <span class="section-header__label">Recién llegados</span>
+          <h2 class="section-header__title">Nuevos productos</h2>
+        </div>
+        <a href="#" class="link-arrow">Ver todos <span>→</span></a>
+      </div>
+      <div class="products__grid" id="novedadesGrid"></div>
+    </div>
+  </section>
+
+  <!-- MÁS VENDIDOS -->
+  <section class="products products--alt" id="mas-vendidos">
+    <div class="container">
+      <div class="section-header section-header--row">
+        <div>
+          <span class="section-header__label">Favoritos de mamás y papás</span>
+          <h2 class="section-header__title">Los más vendidos</h2>
+        </div>
+        <div class="rating-pill">
+          <span class="rating-pill__stars">★★★★★</span>
+          <span>4.9 en Google</span>
+        </div>
+      </div>
+      <div class="products__grid" id="bestsellersGrid"></div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO INSTAGRAM -->
+  <section class="products" id="catalogo">
+    <div class="container">
+      <div class="section-header section-header--row">
+        <div>
+          <span class="section-header__label">Directo de @bebe.pepon</span>
+          <h2 class="section-header__title">Catálogo Instagram</h2>
+        </div>
+        <a href="https://www.instagram.com/bebe.pepon/" target="_blank" rel="noopener" class="link-arrow">Ver perfil <span>→</span></a>
+      </div>
+      <div class="products__grid products__grid--catalog" id="catalogoGrid"></div>
+    </div>
+  </section>
+
+  <!-- TIENDA POR CATEGORÍA -->
+  <section class="products products--shop" id="tienda">
+    <div class="container">
+      <div class="section-header section-header--center">
+        <span class="section-header__label">Compra por categoría</span>
+        <h2 class="section-header__title" id="shopTitle">Peleles</h2>
+        <p class="shop-tagline" id="shopTagline">Desde 15€ · Lazo incluido</p>
+      </div>
+      <nav class="category-tabs" id="categoryTabs" aria-label="Filtrar por categoría">
+        <button type="button" class="category-tabs__btn category-tabs__btn--active" data-category="peleles"><span class="menu-emoji"><span class="menu-emoji__char">👶</span></span> Peleles</button>
+        <button type="button" class="category-tabs__btn" data-category="ranitas"><span class="menu-emoji"><span class="menu-emoji__char">🌸</span></span> Ranitas</button>
+        <button type="button" class="category-tabs__btn" data-category="jesusitos"><span class="menu-emoji"><span class="menu-emoji__char">🎀</span></span> Jesusitos</button>
+        <button type="button" class="category-tabs__btn" data-category="saquitos"><span class="menu-emoji"><span class="menu-emoji__char">🧸</span></span> Saquitos</button>
+        <button type="button" class="category-tabs__btn" data-category="volantes"><span class="menu-emoji"><span class="menu-emoji__char">💫</span></span> Volantes</button>
+        <button type="button" class="category-tabs__btn" data-category="bebe"><span class="menu-emoji"><span class="menu-emoji__char">🍼</span></span> Bebé</button>
+        <button type="button" class="category-tabs__btn" data-category="ninos"><span class="menu-emoji"><span class="menu-emoji__char">🌿</span></span> Niños</button>
+      </nav>
+      <div class="products__grid" id="categoryShopGrid"></div>
+      <p class="shop-note">Fotos reales de <a href="https://www.instagram.com/bebe.pepon/" target="_blank" rel="noopener">@bebe.pepon</a> · Pedidos por Instagram o WhatsApp</p>
+    </div>
+  </section>
+
+  <!-- CATEGORÍA DESTACADA -->
+  <section class="featured" id="destacada">
+    <div class="featured__bg">
+      <img src="assets/images/products/thumbs/15-jesusito-ninos-3.jpg" alt="Colección Jesusitos" loading="lazy" decoding="async">
+    </div>
+    <div class="featured__content">
+      <div class="featured__glass">
+        <span class="featured__label">Categoría destacada</span>
+        <h2 class="featured__title">Colección <em>Jesusitos</em></h2>
+        <p class="featured__text">Nuestros conjuntos de 3 piezas son el favorito de las familias. Vestido con vuelo, cubrepañal a juego y lazo incluido. Perfectos para bautizos, cumpleaños o el día a día.</p>
+        <ul class="featured__list">
+          <li>Confección propia artesanal</li>
+          <li>Tejidos suaves y transpirables</li>
+          <li>Tallas bebé (12–48 meses) y niños (2–8 años)</li>
+          <li>Envíos a toda España</li>
+        </ul>
+        <div class="featured__prices">
+          <div class="featured__price-item">
+            <span>Bebé</span>
+            <strong>19,90 €</strong>
+          </div>
+          <div class="featured__price-item">
+            <span>Niños</span>
+            <strong>24,90 €</strong>
+          </div>
+        </div>
+        <a href="#jesusitos" class="btn btn--primary">Explorar Jesusitos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEÑAS GOOGLE -->
+  <section class="reviews" id="reseñas">
+    <div class="container">
+      <div class="section-header section-header--center">
+        <span class="section-header__label">Lo que dicen de nosotros</span>
+        <h2 class="section-header__title">Reseñas de Google</h2>
+        <div class="reviews__summary">
+          <div class="reviews__score">
+            <span class="reviews__number">4.9</span>
+            <div class="reviews__stars">★★★★★</div>
+            <span class="reviews__count">Basado en 47 valoraciones</span>
+          </div>
+          <div class="reviews__google">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            <span>Google Reviews</span>
+          </div>
+        </div>
+      </div>
+      <div class="reviews__grid">
+        <article class="review-card">
+          <div class="review-card__header">
+            <div class="review-card__avatar">M</div>
+            <div>
+              <h4>María G.</h4>
+              <div class="review-card__stars">★★★★★</div>
+            </div>
+            <span class="review-card__date">Hace 2 semanas</span>
+          </div>
+          <p>«Compré el jesusito para el bautizo de mi niña y quedó precioso. La calidad del tejido es excelente y el lazo incluido es un detalle precioso. Repetiré sin duda.»</p>
+        </article>
+        <article class="review-card">
+          <div class="review-card__header">
+            <div class="review-card__avatar">L</div>
+            <div>
+              <h4>Laura P.</h4>
+              <div class="review-card__stars">★★★★★</div>
+            </div>
+            <span class="review-card__date">Hace 1 mes</span>
+          </div>
+          <p>«Los peleles con lazo son una maravilla. Suaves, bien acabados y llegaron rapidísimo. La atención por Instagram fue muy cercana y amable. 100% recomendable.»</p>
+        </article>
+        <article class="review-card">
+          <div class="review-card__header">
+            <div class="review-card__avatar">C</div>
+            <div>
+              <h4>Carmen R.</h4>
+              <div class="review-card__stars">★★★★★</div>
+            </div>
+            <span class="review-card__date">Hace 1 mes</span>
+          </div>
+          <p>«Pedí la ranita de volantes en vichy azul y es igual que en las fotos. Confección propia se nota en cada costura. Mi bebé está guapísimo y cómodo.»</p>
+        </article>
+        <article class="review-card">
+          <div class="review-card__header">
+            <div class="review-card__avatar">A</div>
+            <div>
+              <h4>Ana S.</h4>
+              <div class="review-card__stars">★★★★★</div>
+            </div>
+            <span class="review-card__date">Hace 2 meses</span>
+          </div>
+          <p>«Regalé un saquito elásticos a mi sobrina recién nacida y a la madre le encantó. Precio muy justo para la calidad que ofrecen. Envío a domicilio sin problemas.»</p>
+        </article>
+        <article class="review-card">
+          <div class="review-card__header">
+            <div class="review-card__avatar">P</div>
+            <div>
+              <h4>Patricia M.</h4>
+              <div class="review-card__stars">★★★★★</div>
+            </div>
+            <span class="review-card__date">Hace 2 meses</span>
+          </div>
+          <p>«El jesusito de 3 piezas para mi hijo de 4 años es perfecto. Elegante pero cómodo. Los volantes y los cuadros vichy tienen un estilo clásico que no pasa de moda.»</p>
+        </article>
+        <article class="review-card">
+          <div class="review-card__header">
+            <div class="review-card__avatar">I</div>
+            <div>
+              <h4>Isabel T.</h4>
+              <div class="review-card__stars">★★★★★</div>
+            </div>
+            <span class="review-card__date">Hace 3 meses</span>
+          </div>
+          <p>«Tienda con mucho gusto y buen trato. La ropa es preciosa, con ese toque artesanal que buscaba. Los cuellos volantes son su sello distintivo. Volveré a comprar.»</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQS -->
+  <section class="faqs" id="faqs">
+    <div class="container">
+      <div class="faqs__layout">
+        <div class="faqs__intro">
+          <span class="section-header__label">¿Tienes dudas?</span>
+          <h2 class="section-header__title">Preguntas frecuentes</h2>
+          <p>Resolvemos las consultas más habituales sobre tallas, envíos y nuestros productos de confección propia.</p>
+          <a href="https://www.instagram.com/bebe.pepon/" target="_blank" rel="noopener" class="btn btn--outline">Síguenos en Instagram</a>
+        </div>
+        <div class="faqs__list">
+          <details class="faq-item" open>
+            <summary>¿Qué tallas tenéis disponibles?</summary>
+            <p>Dependiendo del modelo: peleles y ranitas desde 6 hasta 48 meses; jesusitos de bebé en tallas 12, 18, 24, 36 y 48 meses; y jesusitos de niños de 2 a 8 años. Consulta cada producto para ver las tallas exactas.</p>
+          </details>
+          <details class="faq-item">
+            <summary>¿Hacéis envíos a toda España?</summary>
+            <p>Sí, realizamos envíos a toda la península. Los pedidos se preparan con mucho cuidado y se envían en un plazo de 2–5 días laborables. Te informamos del seguimiento por mensaje directo.</p>
+          </details>
+          <details class="faq-item">
+            <summary>¿Qué significa "confección propia"?</summary>
+            <p>Todas nuestras prendas son diseñadas y confeccionadas por nosotros. Seleccionamos tejidos de calidad, cuidamos cada detalle —volantes, lazos, acabados— y controlamos todo el proceso para ofrecerte ropa única.</p>
+          </details>
+          <details class="faq-item">
+            <summary>¿El lazo va incluido en los jesusitos y peleles?</summary>
+            <p>Sí, en los modelos que indican "lazo incluido" recibirás el lazo a juego con la prenda, listo para completar el look sin compras adicionales.</p>
+          </details>
+          <details class="faq-item">
+            <summary>¿Cómo puedo hacer un pedido?</summary>
+            <p>Puedes contactarnos por WhatsApp o Instagram Direct. Te ayudamos a elegir talla, color y modelo. Este sitio es una presentación del proyecto; el proceso de compra se gestiona de forma personalizada.</p>
+          </details>
+          <details class="faq-item">
+            <summary>¿Cuál es la diferencia entre pelele, ranita y jesusito?</summary>
+            <p>El pelele cubre cuerpo y piernas en una sola pieza. La ranita cubre el torso dejando las piernas al aire, ideal para climas cálidos. El jesusito es un vestido con vuelo que incluye cubrepañal a juego, perfecto para ocasiones especiales.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contacto">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="assets/images/products/logo.jpg" alt="bebé pepón" class="footer__logo">
+          <h3 class="footer__name">bebé pepón</h3>
+          <p>Moda infantil clásica con confección propia. Peleles, ranitas, jesusitos y saquitos hechos con amor para los más pequeños.</p>
+          <div class="footer__social">
+            <a href="https://www.instagram.com/bebe.pepon/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer__links">
+          <h4>Categorías</h4>
+          <ul>
+            <li><a href="#peleles">Peleles</a></li>
+            <li><a href="#ranitas">Ranitas</a></li>
+            <li><a href="#jesusitos">Jesusitos</a></li>
+            <li><a href="#saquitos">Saquitos</a></li>
+            <li><a href="#volantes">Volantes</a></li>
+            <li><a href="#novedades">Novedades</a></li>
+          </ul>
+        </div>
+        <div class="footer__links">
+          <h4>Información</h4>
+          <ul>
+            <li><a href="#faqs">Preguntas frecuentes</a></li>
+            <li><a href="#reseñas">Reseñas</a></li>
+            <li><a href="#destacada">Colección destacada</a></li>
+            <li><a href="#mas-vendidos">Más vendidos</a></li>
+          </ul>
+        </div>
+        <div class="footer__contact">
+          <h4>Contacto</h4>
+          <ul>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="https://www.instagram.com/bebe.pepon/">@bebe.pepon</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Envíos a toda España
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Lun – Sáb: 10:00 – 19:00
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+              <a href="https://ig.me/m/bebe.pepon" id="footerContactBtn" target="_blank" rel="noopener">Escríbenos por Instagram</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__map" aria-label="Zona de envíos">
+        <div class="footer__map-visual" aria-hidden="true">
+          <svg viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <path class="footer__map-land" d="M72 58 C95 42, 128 36, 162 40 C198 44, 228 58, 252 82 C278 108, 292 138, 286 168 C280 198, 258 222, 228 236 C198 250, 162 254, 128 246 C94 238, 68 218, 54 188 C40 158, 44 126, 58 98 C64 84, 68 68, 72 58 Z"/>
+            <path class="footer__map-land" d="M248 196 C262 188, 282 192, 296 206 C308 220, 306 240, 292 252 C278 264, 256 262, 244 248 C232 234, 234 212, 248 196 Z"/>
+            <circle class="footer__map-dot" cx="168" cy="132" r="7"/>
+            <circle class="footer__map-pulse" cx="168" cy="132" r="18"/>
+          </svg>
+        </div>
+        <div class="footer__map-info">
+          <p class="footer__map-label">Envíos a toda España</p>
+          <p class="footer__map-text">Península ibérica · Entrega en 2–5 días laborables</p>
+          <a href="https://www.google.com/maps/place/Espa%C3%B1a" target="_blank" rel="noopener" class="footer__map-link">Ver en Google Maps →</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 bebé pepón · Todos los derechos reservados</p>
+        <p class="footer__demo">Proyecto de presentación · Tienda demo</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP -->
+  <a href="https://ig.me/m/bebe.pepon" class="whatsapp-btn" id="whatsappBtn" target="_blank" rel="noopener" aria-label="Contactar por Instagram">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    <span class="whatsapp-btn__tooltip">¡Hola! ¿En qué podemos ayudarte? 💕</span>
+  </a>
+
+  <!-- CARRITO SIDEBAR -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-sidebar" id="cartSidebar" aria-label="Carrito de compras">
+    <div class="cart-sidebar__header">
+      <h3>Tu carrito <span id="cartCount">(2)</span></h3>
+      <button class="cart-sidebar__close" id="cartClose" aria-label="Cerrar carrito">✕</button>
+    </div>
+    <div class="cart-sidebar__items" id="cartItems">
+      <div class="cart-item">
+        <img src="assets/images/products/thumbs/01-pelele-lazo.jpg" alt="Pelele con Lazo">
+        <div class="cart-item__info">
+          <h4>Pelele con Lazo</h4>
+          <p>Talla 12 meses</p>
+          <span class="cart-item__price">15,00 €</span>
+        </div>
+        <button class="cart-item__remove" aria-label="Eliminar">✕</button>
+      </div>
+      <div class="cart-item">
+        <img src="assets/images/products/thumbs/05-jesusito-ninos.jpg" alt="Jesusito 3 piezas">
+        <div class="cart-item__info">
+          <h4>Jesusito 3 piezas · Niños</h4>
+          <p>Talla 4 años</p>
+          <span class="cart-item__price">24,90 €</span>
+        </div>
+        <button class="cart-item__remove" aria-label="Eliminar">✕</button>
+      </div>
+    </div>
+    <div class="cart-sidebar__footer">
+      <div class="cart-sidebar__subtotal">
+        <span>Subtotal</span>
+        <strong id="cartSubtotal">39,90 €</strong>
+      </div>
+      <p class="cart-sidebar__note">Proyecto demo · El checkout no está activo</p>
+      <button class="btn btn--primary btn--full" disabled>Finalizar compra</button>
+      <button class="btn btn--outline btn--full" id="cartContinue">Seguir comprando</button>
+    </div>
+  </aside>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu__header">
+      <span class="navbar__logo-text">bebé pepón</span>
+      <button id="mobileMenuClose" aria-label="Cerrar menú">✕</button>
+    </div>
+    <nav>
+      <a href="#novedades"><span class="menu-emoji"><span class="menu-emoji__char">✨</span></span> Novedades</a>
+      <a href="#peleles"><span class="menu-emoji"><span class="menu-emoji__char">👶</span></span> Peleles</a>
+      <a href="#ranitas"><span class="menu-emoji"><span class="menu-emoji__char">🌸</span></span> Ranitas</a>
+      <a href="#jesusitos"><span class="menu-emoji"><span class="menu-emoji__char">🎀</span></span> Jesusitos</a>
+      <a href="#saquitos"><span class="menu-emoji"><span class="menu-emoji__char">🧸</span></span> Saquitos</a>
+      <a href="#volantes"><span class="menu-emoji"><span class="menu-emoji__char">💫</span></span> Volantes</a>
+      <a href="#bebe"><span class="menu-emoji"><span class="menu-emoji__char">🍼</span></span> Bebé</a>
+      <a href="#ninos"><span class="menu-emoji"><span class="menu-emoji__char">🌿</span></span> Niños</a>
+      <a href="#reseñas"><span class="menu-emoji"><span class="menu-emoji__char">⭐</span></span> Reseñas</a>
+      <a href="#faqs"><span class="menu-emoji"><span class="menu-emoji__char">❓</span></span> FAQs</a>
+    </nav>
+  </div>
+
+  <script src="js/config.js" defer></script>
+  <script src="js/products.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
